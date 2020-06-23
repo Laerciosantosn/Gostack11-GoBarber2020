@@ -16,11 +16,11 @@ const AuthRoutes: React.FC = () => (
       cardStyle: { backgroundColor: '#312E38' },
     }}
   >
-    <App.Screen name="SignIn" component={Dashboard} />
-    <App.Screen name="SignIn" component={CreateAppointment} />
-    <App.Screen name="SignIn" component={AppoitmentCreated} />
+    <App.Screen name="Dashboard" component={Dashboard} />
+    <App.Screen name="CreateAppointment" component={CreateAppointment} />
+    <App.Screen name="AppoitmentCreated" component={AppoitmentCreated} />
 
-    <App.Screen name="SignIn" component={Profile} />
+    <App.Screen name="Profile" component={Profile} />
   </App.Navigator>
 );
 
