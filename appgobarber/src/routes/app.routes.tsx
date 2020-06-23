@@ -3,6 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Dashboard from '../pages/Dashboard';
 
+import Profile from '../pages/Profile';
+import CreateAppointment from '../pages/CreateAppointment';
+import AppoitmentCreated from '../pages/AppointmentCreated';
+
 const App = createStackNavigator();
 
 const AuthRoutes: React.FC = () => (
@@ -13,6 +17,10 @@ const AuthRoutes: React.FC = () => (
     }}
   >
     <App.Screen name="SignIn" component={Dashboard} />
+    <App.Screen name="SignIn" component={CreateAppointment} />
+    <App.Screen name="SignIn" component={AppoitmentCreated} />
+
+    <App.Screen name="SignIn" component={Profile} />
   </App.Navigator>
 );
 
