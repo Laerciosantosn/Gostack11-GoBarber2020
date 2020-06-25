@@ -120,7 +120,7 @@ const CreateAppointment: React.FC = () => {
       date.setMinutes(0);
       await api.post('appointments', {
         provider_id: selectedProvider,
-        date,
+        date: '2020-06-26 11:00:00',
       });
 
       navigate('AppointmentCreated', { date: date.getTime() });
