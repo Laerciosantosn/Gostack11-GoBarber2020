@@ -60,7 +60,7 @@ const SignIn: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false, // retorna todos os erros de uma vez só e não o primeiro que ele econtra
         });
-
+        console.log(data);
         await signIn({
           email: data.email,
           password: data.password,
