@@ -32,6 +32,7 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
     });
   }
 
+  // eslint-disable-next-line
   console.error(err);
 
   return response.status(500).json({
@@ -41,5 +42,6 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 });
 
 app.listen(3333, () => {
+  // eslint-disable-next-line
   console.log('🖥 🖥 Server is running in http://localhost:3333');
 });

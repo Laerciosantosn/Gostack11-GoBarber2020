@@ -13,7 +13,6 @@ interface IRequest {
   user_id: string;
   date: Date;
 }
-
 @injectable()
 class CreateAppointmentService {
   constructor(
