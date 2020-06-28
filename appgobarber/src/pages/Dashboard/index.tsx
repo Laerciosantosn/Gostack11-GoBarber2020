@@ -8,6 +8,8 @@ import { useAuth } from '../../hooks/auth';
 import {
   Container,
   Header,
+  ProfileContainer,
+  LogoutButton,
   HeaderTitle,
   UserName,
   ProfileButton,
@@ -20,6 +22,7 @@ import {
   ProviderName,
   ProviderMeta,
   ProviderMetaText,
+
 } from './styles';
 
 export interface Provider {
@@ -41,7 +44,10 @@ const Dashboard: React.FC = () => {
   }, []);
 
   const navigateToProfile = useCallback(() => {
-    // navigate('Profile');]
+    navigate('Profile');
+  }, [navigate]);
+
+  const logout = useCallback(() => {
     signOut();
   }, [signOut]);
 
@@ -55,14 +61,26 @@ const Dashboard: React.FC = () => {
   return (
     <Container>
       <Header>
-        <HeaderTitle>
-          Bem vindo,{'\n'}
-          <UserName>{user.name}</UserName>
-        </HeaderTitle>
+        <ProfileContainer>
+          <ProfileButton onPress={navigateToProfile}>
+            <UserAvatar
+              source={{
+                uri:
+                  user.avatar_url ||
+                  'https://api.adorable.io/avatars/250/abott@adorable.png',
+              }}
+            />
+          </ProfileButton>
 
-        <ProfileButton onPress={navigateToProfile}>
-          <UserAvatar source={{ uri: user.avatar_url }} />
-        </ProfileButton>
+          <HeaderTitle>
+            Bem vindo,{'\n'}
+            <UserName onPress={navigateToProfile}>{user.name}</UserName>
+          </HeaderTitle>
+        </ProfileContainer>
+
+        <LogoutButton onPress={logout}>
+          <Icon name="power" size={24} color="#999591" />
+        </LogoutButton>
       </Header>
 
       <ProvidersList
@@ -75,7 +93,13 @@ const Dashboard: React.FC = () => {
           <ProviderContainer
             onPress={() => navigateToCreateAppoitment(provider.id)}
           >
-            <ProviderAvatar source={{ uri: provider.avatar_url }} />
+            <ProviderAvatar
+              source={{
+                uri:
+                  provider.avatar_url ||
+                  'https://api.adorable.io/avatars/250/abott@adorable.png',
+              }}
+            />
 
             <ProviderInfo>
               <ProviderName>{provider.name}</ProviderName>

@@ -116,15 +116,17 @@ const CreateAppointment: React.FC = () => {
     try {
       const date = new Date(selectedDate);
 
-      date.setHours(selectedHour);
-      date.setMinutes(0);
+      date.setUTCHours(selectedHour);
+      date.setUTCMinutes(0);
+
       await api.post('appointments', {
         provider_id: selectedProvider,
-        date: '2020-06-26 11:00:00',
+        date,
       });
 
       navigate('AppointmentCreated', { date: date.getTime() });
     } catch (error) {
+      console.log(error);
       Alert.alert(
         'Erro ao criar agendamento',
         'Ocorreu um erro ao tentar criar o agendamento, tente novamente'
@@ -165,7 +167,13 @@ const CreateAppointment: React.FC = () => {
 
         <HeaderTitle>Cabeleireiros</HeaderTitle>
 
-        <UserAvatar source={{ uri: user.avatar_url }} />
+        <UserAvatar
+          source={{
+            uri:
+              user.avatar_url ||
+              'https://api.adorable.io/avatars/250/abott@adorable.png',
+          }}
+        />
       </Header>
 
       <Content>
@@ -180,7 +188,13 @@ const CreateAppointment: React.FC = () => {
                 onPress={() => handleSelectProvider(provider.id)}
                 selected={provider.id === selectedProvider}
               >
-                <ProviderAvatar source={{ uri: provider.avatar_url }} />
+                <ProviderAvatar
+                  source={{
+                    uri:
+                      provider.avatar_url ||
+                      'https://api.adorable.io/avatars/250/abott@adorable.png',
+                  }}
+                />
                 <ProviderName selected={provider.id === selectedProvider}>
                   {provider.name}
                 </ProviderName>

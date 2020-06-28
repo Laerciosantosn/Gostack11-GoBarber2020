@@ -18,11 +18,18 @@ export const Header = styled.View`
   align-items: center;
 `;
 
+export const ProfileContainer = styled.View`
+  flex-direction: row;
+`;
+
+export const LogoutButton = styled.TouchableOpacity``;
+
 export const HeaderTitle = styled.Text`
   color: #f4ede8;
   font-size: 20px;
   font-family: 'RobotoSlab-Regular';
   line-height: 28px;
+  margin-left: 20px;
 `;
 
 export const UserName = styled.Text`
